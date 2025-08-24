@@ -1,0 +1,466 @@
+:root {
+  /* Gradient Background Colors */
+  --gradient-start: #5e0055;
+  --gradient-end: #18005f;
+  
+  /* Container Colors */
+  --container-bg: rgba(255, 255, 255, 0.1);
+  --container-border: rgba(255, 255, 255, 0.2);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #f0f0f0;
+  --text-dark: #333333;
+  
+  /* Button Colors */
+  --btn-primary: #007bff00;
+  --btn-hover: #ffffff;
+  --btn-text: #ffffff;
+  --btn-hover-text: #5e0055;
+  --btn-border: #ffffff;
+  --btn-start-bg: #28a745;
+  --btn-stop-bg: #dc3545;
+  --btn-set-order-bg: #17a2b8;
+  
+  /* Table Colors */
+  --table-header: #007bff00;
+  --table-row-even: rgba(255, 255, 255, 0.05);
+  --table-row-odd: rgba(255, 255, 255, 0.1);
+  --table-border: rgba(255, 255, 255, 0.2);
+  
+  /* Timer Color */
+  --timer-color: #00ffff;
+  
+  /* Form Colors */
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --input-border: rgba(255, 255, 255, 0.3);
+  --input-text: #ffffff;
+  
+  /* Popup Color */
+  --popup-bg: var(--gradient-start);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+}
+
+body {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--container-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid var(--container-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2, h3 {
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  padding: 12px 24px;
+  background: var(--btn-primary);
+  color: var(--btn-text);
+  border: 2px solid var(--btn-border);
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 8px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: var(--btn-hover);
+  color: var(--btn-hover-text);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  background: #555555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-start {
+  background: var(--btn-start-bg);
+  color: var(--btn-text);
+}
+
+.btn-start:hover {
+  background: #218838;
+  color: var(--btn-text);
+}
+
+.btn-stop {
+  background: var(--btn-stop-bg);
+  color: var(--btn-text);
+}
+
+.btn-stop:hover {
+  background: #c82333;
+  color: var(--btn-text);
+}
+
+.btn-set-order {
+  background: var(--btn-set-order-bg);
+  color: var(--btn-text);
+}
+
+.btn-set-order:hover {
+  background: #138496;
+  color: var(--btn-text);
+}
+
+nav {
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+input, select {
+  padding: 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--input-text);
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background: var(--container-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+}
+
+th {
+  background: var(--table-header);
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background: var(--table-row-even);
+}
+
+tr:nth-child(odd) {
+  background: var(--table-row-odd);
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.role-selection {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+#team-rosters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.team-roster {
+  background: var(--container-bg);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--container-border);
+}
+
+.timer {
+  font-weight: bold;
+  color: var(--timer-color);
+  font-size: 24px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.center {
+  text-align: center;
+}
+
+.big-bold {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.count-boxes {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.count-boxes > div {
+  background: var(--table-row-odd);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Two-Column Layout for Audience View */
+.audience-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.left-column {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-column {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auction-details {
+  background: var(--container-bg);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--container-border);
+}
+
+.auction-details p {
+  margin-bottom: 10px;
+}
+
+.auction-details strong {
+  color: var(--text-secondary);
+}
+
+.selection-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--popup-bg);
+  padding: 20px;
+  border: 1px solid var(--container-border);
+  border-radius: 8px;
+  z-index: 1000;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease;
+}
+
+.selection-popup .highlight {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+/* Control Auction Tab */
+.auction-controls, .turn-management, .pending-requests, .team-rosters {
+  background: var(--container-bg);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--container-border);
+  margin-bottom: 20px;
+}
+
+.pending-requests-box {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  min-height: 50px;
+}
+
+.pending-requests-box p {
+  margin: 0 0 10px 0;
+}
+
+.timer-progress {
+  width: 100%;
+  height: 10px;
+  background: var(--table-border);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+#timer-progress-bar {
+  height: 100%;
+  background: var(--timer-color);
+  width: 100%;
+  transition: width 1s linear;
+}
+
+#turn-order-list {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+#turn-order-list li {
+  margin-bottom: 5px;
+  color: var(--text-primary);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--popup-bg);
+  padding: 20px;
+  border: 1px solid var(--container-border);
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+}
+
+.modal-content button {
+  margin: 10px;
+}
+
+#edit-candidate-image-preview {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 10px auto;
+  display: none;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .role-selection {
+    flex-direction: column;
+  }
+  
+  button, input, select {
+    width: 100%;
+  }
+  
+  table {
+    font-size: 16px;
+  }
+  
+  #team-rosters {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .audience-layout {
+    flex-direction: column;
+  }
+  
+  .left-column, .right-column {
+    flex: none;
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  input, select {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  #team-rosters {
+    grid-template-columns: 1fr;
+  }
+
+  .count-boxes {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Focus States */
+button:focus, input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artsfest Auction</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Select Your Role</h1>
+    <div class="role-selection">
+      <button onclick="selectRole('admin')">Admin</button>
+      <button onclick="selectRole('leader')">Leader</button>
+      <button onclick="selectRole('audience')">Audience</button>
+    </div>
+    <div id="admin-password-selection" style="display: none;">
+      <p>Enter admin password</p>
+      <input type="password" id="admin-password">
+      <button onclick="confirmAdminPassword()">Confirm</button>
+    </div>
+    <div id="leader-team-selection" style="display: none;">
+      <p>Select your team</p>
+      <select id="team-select"></select>
+      <button onclick="confirmLeaderTeam()">Confirm</button>
+    </div>
+  </div>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

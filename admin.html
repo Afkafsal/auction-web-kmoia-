@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artsfest Auction - Admin Panel</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <nav>
+      <button onclick="showSection('candidates')">Manage Candidates</button>
+      <button onclick="showSection('teams')">Manage Teams</button>
+      <button onclick="showSection('auction')">Control Auction</button>
+      <button onclick="showSection('download')">Download Results</button>
+      <button onclick="resetSystem()">Reset System</button>
+      <button onclick="logout()">Logout</button>
+    </nav>
+    <div id="candidates" class="section active">
+      <h2>Manage Candidates</h2>
+      <p class="note">Note: Upload a CSV with Name, Admission Number, and Class. Add local images using the Edit button after uploading.</p>
+      <form id="candidate-form">
+        <input type="text" id="candidate-name" placeholder="Candidate Name" required>
+        <input type="text" id="candidate-admission-number" placeholder="Admission Number" required>
+        <select id="candidate-class" required>
+          <option value="">Select Class</option>
+          <option value="1">Class 1</option>
+          <option value="2">Class 2</option>
+          <option value="3">Class 3</option>
+          <option value="4">Class 4</option>
+          <option value="5">Class 5</option>
+          <option value="6">Class 6</option>
+          <option value="7">Class 7</option>
+          <option value="8">Class 8</option>
+          <option value="9">Class 9</option>
+        </select>
+        <input type="file" id="candidate-image" accept="image/*">
+        <button type="submit">Add Candidate</button>
+        <input type="file" id="csv-file" accept=".csv">
+        <button type="button" onclick="uploadCSV()">Upload CSV</button>
+      </form>
+      <h3>Candidates List</h3>
+      <table id="candidates-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Admission Number</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="teams" class="section">
+      <h2>Manage Teams</h2>
+      <form id="team-form">
+        <input type="text" id="team-name" placeholder="Team Name" required>
+        <input type="text" id="team-leader" placeholder="Leader Name" required>
+        <input type="text" id="team-assistant-leader" placeholder="Assistant Leader Name">
+        <button type="submit">Add Team</button>
+      </form>
+      <h3>Teams List</h3>
+      <table id="teams-table">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Leader</th>
+            <th>Assistant Leader</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="auction" class="section">
+      <h2>Control Auction</h2>
+      <div class="auction-controls">
+        <h3>Auction Controls</h3>
+        <button id="start-auction" onclick="startAuction()" class="btn-start">Start Auction</button>
+        <button id="stop-auction" onclick="stopAuction()" disabled class="btn-stop">Stop Auction</button>
+        <p>Auction Status: <span id="auction-status" class="big-bold">Not Started</span></p>
+      </div>
+      <div class="turn-management">
+        <h3>Turn Management</h3>
+        <p>Current Turn: <span id="current-turn-admin" class="big-bold">None</span></p>
+        <p>Time Remaining: <span id="timer-admin" class="timer">30</span>s</p>
+        <div class="timer-progress">
+          <div id="timer-progress-bar"></div>
+        </div>
+        <p>Turn Order: <span id="turn-order-message">Not set</span></p>
+        <ol id="turn-order-list"></ol>
+        <button onclick="setTurnOrder()" class="btn-set-order">Set Turn Order</button>
+      </div>
+      <div class="pending-requests">
+        <h3>Pending Requests</h3>
+        <div id="pending-requests-box"></div>
+      </div>
+      <div class="team-rosters">
+        <h3>Team Rosters</h3>
+        <div id="admin-rosters"></div>
+        <div class="count-boxes">
+          <div id="team-counts"></div>
+          <div>Unselected: <span id="unselected-count">0</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="download" class="section">
+      <h2>Download Results</h2>
+      <button onclick="downloadResults()">Download as CSV</button>
+      <h3>Results Preview</h3>
+      <table id="results-preview">
+        <thead>
+          <tr>
+            <th>Candidate</th>
+            <th>Class</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="reset-modal" class="modal">
+      <div class="modal-content">
+        <h3>Confirm Reset</h3>
+        <p>Are you sure you want to reset all data? This cannot be undone.</p>
+        <button onclick="confirmReset()">Yes</button>
+        <button onclick="cancelReset()">No</button>
+      </div>
+    </div>
+    <div id="csv-feedback-modal" class="modal">
+      <div class="modal-content">
+        <h3>CSV Upload Result</h3>
+        <p id="csv-feedback-message"></p>
+        <button onclick="closeCSVFeedbackModal()">Close</button>
+      </div>
+    </div>
+    <div id="edit-candidate-modal" class="modal"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artsfest Auction - Audience View</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Audience View</h1>
+    <div class="audience-layout">
+      <div class="left-column">
+        <button onclick="logout()">Logout</button>
+        <h2>Auction Dashboard</h2>
+        <div class="auction-details">
+          <p><strong>Auction Status:</strong> <span id="auction-status">Not Started</span></p>
+          <p><strong>Current Turn:</strong> <span id="current-turn">None</span></p>
+          <p><strong>Current Class:</strong> <span id="current-class">None</span></p>
+          <p><strong>Time Remaining:</strong> <span id="timer" class="timer">30</span>s</p>
+        </div>
+      </div>
+      <div class="right-column">
+        <h2>Team Rosters</h2>
+        <div id="team-rosters"></div>
+        <h2>Available Candidates</h2>
+        <input type="text" id="candidate-search" placeholder="Search by name or class">
+        <table id="candidates-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Class</th>
+              <th>Admission Number</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="selection-popup" class="selection-popup">
+      <img id="popup-image" src="" style="max-width:200px; display:none;">
+      <p id="popup-message"></p>
+    </div>
+  </div>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

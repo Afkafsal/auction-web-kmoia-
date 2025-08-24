@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artsfest Auction - Leader View</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Leader View</h1>
+    <h2 id="leader-team" class="center big-bold"></h2>
+    <button onclick="logout()">Logout</button>
+    <h2>Auction Dashboard</h2>
+    <p>Auction Status: <span id="auction-status">Not Started</span></p>
+    <p>Current Turn: <span id="current-turn" class="big-bold">None</span></p>
+    <p>Current Class: <span id="current-class" class="big-bold">None</span></p>
+    <p>Time Remaining: <span id="timer" class="timer">30</span>s</p>
+    <h3>Available Candidates</h3>
+    <input type="text" id="candidate-search" placeholder="Search by name or class">
+    <table id="candidates-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Admission Number</th>
+          <th>Request</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <h3>Your Team Roster</h3>
+    <table id="roster-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Admission Number</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>
